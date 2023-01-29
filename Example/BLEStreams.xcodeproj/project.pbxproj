@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		542962392986BF6E000FAAF5 /* BLEInputStreamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542962382986BF6E000FAAF5 /* BLEInputStreamTests.swift */; };
 		5429623D2986C424000FAAF5 /* XCTestCaseExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5429623B2986C32A000FAAF5 /* XCTestCaseExtensions.swift */; };
+		5429623F2987108C000FAAF5 /* StreamThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5429623E2987108C000FAAF5 /* StreamThread.swift */; };
 		5FE7CF0B643D6621D43B08E1 /* Pods_BLEStreams_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 456E938A4B9EEF9342E7660F /* Pods_BLEStreams_Example.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
@@ -35,6 +36,7 @@
 		4A2B4DB32D5AC68172FEA8DA /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		542962382986BF6E000FAAF5 /* BLEInputStreamTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLEInputStreamTests.swift; sourceTree = "<group>"; };
 		5429623B2986C32A000FAAF5 /* XCTestCaseExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestCaseExtensions.swift; sourceTree = "<group>"; };
+		5429623E2987108C000FAAF5 /* StreamThread.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamThread.swift; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* BLEStreams_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BLEStreams_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 			children = (
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
+				5429623E2987108C000FAAF5 /* StreamThread.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
@@ -346,6 +349,7 @@
 			files = (
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				5429623F2987108C000FAAF5 /* StreamThread.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

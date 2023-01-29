@@ -11,6 +11,7 @@ public class BLEInputStream: InputStream {
     private var data = Data()
     private var runLoopSource: CFRunLoopSource?
     private var runLoop: RunLoop?
+    private var runLoopMode: CFRunLoopMode?
 //    private var
     public override var hasBytesAvailable: Bool {
         get {
@@ -45,23 +46,20 @@ public class BLEInputStream: InputStream {
         self.data += data
         delegate?.stream?(self, handle: .hasBytesAvailable)
         
-        if let runLoopSource {
-            CFRunLoopSourceSignal(runLoopSource)
-            print("CFRunLoopSourceSignal(runLoopSource)")
+        if let runLoopSource, let runLoop, let runLoopMode {
+            CFRunLoopRemoveSource(runLoop.getCFRunLoop(), runLoopSource, runLoopMode)
         }
         if let runLoop {
             CFRunLoopWakeUp(runLoop.getCFRunLoop())
-            print("CFRunLoopWakeUp(runLoop.getCFRunLoop())")
         }
     }
     
     public override func schedule(in aRunLoop: RunLoop, forMode mode: RunLoop.Mode) {
-        self.runLoop = aRunLoop
+        runLoop = aRunLoop
         var context = CFRunLoopSourceContext()
-        self.runLoopSource = CFRunLoopSourceCreate(nil, 0, &context)
-        let cfloopMode: CFRunLoopMode = CFRunLoopMode(mode as CFString)
-        CFRunLoopAddSource(aRunLoop.getCFRunLoop(), self.runLoopSource!, cfloopMode)
-        print("hello")
+        runLoopSource = CFRunLoopSourceCreate(nil, 0, &context)
+        runLoopMode = CFRunLoopMode(mode as CFString)
+        CFRunLoopAddSource(aRunLoop.getCFRunLoop(), runLoopSource!, runLoopMode!)
     }
     
     final override public func read(_ buffer: UnsafeMutablePointer<UInt8>, maxLength len: Int) -> Int {

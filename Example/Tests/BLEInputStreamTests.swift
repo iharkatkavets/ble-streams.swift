@@ -63,13 +63,14 @@ final class BLEInputStreamTests: XCTestCase {
         let len = Int.random(in: 0..<100)
         let randomData = randData(length: len)
         
-        let tenSeconds = Double(10)
+        let fiveSeconds = Double(5)
         let oneSecond = TimeInterval(1)
+        let runLoop = RunLoop.current
         runOnBackgroundQueue(oneSecond) {
             self.inputStream?.accept(randomData)
         }
-        let dateInFuture = Date(timeIntervalSinceNow: tenSeconds)
-        inputStream?.schedule(in: .current, forMode: RunLoop.Mode.default)
+        inputStream?.schedule(in: runLoop, forMode: RunLoop.Mode.default)
+        let dateInFuture = Date(timeIntervalSinceNow: fiveSeconds)
         RunLoop.current.run(until: dateInFuture)
         XCTAssertTrue(dateInFuture.timeIntervalSinceNow > 0, "Timeout. RunLoop didn't exit. ")
     }
