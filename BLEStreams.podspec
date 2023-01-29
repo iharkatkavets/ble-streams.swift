@@ -1,42 +1,19 @@
-#
-# Be sure to run `pod lib lint BLEStreams.podspec' to ensure this is a
-# valid spec before submitting.
-#
-# Any lines starting with a # are optional, but their use is encouraged
-# To learn more about a Podspec see https://guides.cocoapods.org/syntax/podspec.html
-#
-
 Pod::Spec.new do |s|
   s.name             = 'BLEStreams'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of BLEStreams.'
-
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
+  s.summary          = 'Custom \'InputStream\' and \'OutputStream\' implementation'
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+Subclasses of InputStream and OutputStream with implemented of required methods. The idea is to look at the development for custom InputStream and OutputStream.
                        DESC
 
-  s.homepage         = 'https://github.com/Ihar Katkavets/BLEStreams'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
+  s.homepage         = 'https://github.com/iharkatkavets/ble-streams.swift'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Ihar Katkavets' => 'iharkatkavets@users.noreply.github.com' }
-  s.source           = { :git => 'https://github.com/Ihar Katkavets/BLEStreams.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.source           = { :git => 'git@github.com:iharkatkavets/ble-streams.swift.git', :tag => s.version.to_s }
 
-  s.ios.deployment_target = '10.0'
+  s.ios.deployment_target = '15.0'
+  s.swift_version = '5.7'
 
   s.source_files = 'BLEStreams/Classes/**/*'
-  
-  # s.resource_bundles = {
-  #   'BLEStreams' => ['BLEStreams/Assets/*.png']
-  # }
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
 end

@@ -1,0 +1,16 @@
+PODS:
+  - BLEStreams (0.1.0)
+
+DEPENDENCIES:
+  - BLEStreams (from `../`)
+
+EXTERNAL SOURCES:
+  BLEStreams:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  BLEStreams: 98285c901b97fa8b6dbea8fc87f1e60a598c47d6
+
+PODFILE CHECKSUM: 41f4f77c112b9702d225335e55a9dc32620c9e59
+
+COCOAPODS: 1.11.3
