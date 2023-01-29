@@ -36,24 +36,43 @@ final class BLEInputStreamTests: XCTestCase {
     
     func testHasBytesAvailableAfterAddingData() {
         inputStream = makeStream()
-        let randomData = Data([1,2,3,4,5])
+        let len = Int.random(in: 0..<100)
+        let randomData = randData(length: len)
         
         hasBytesExpectation = expectation(description: "testHasBytesAvailable")
         inputStream?.accept(randomData)
         wait(for: [hasBytesExpectation!], timeout: 1)
         XCTAssertTrue(inputStream!.hasBytesAvailable)
+    }
+
+    func testReadFromInputStream() {
+        inputStream = makeStream()
+        let len = Int.random(in: 0..<100)
+        let randomData = randData(length: len)
         
-        let len = randomData.count
+        inputStream?.accept(randomData)
+        
         var readData = Array(repeating: UInt8(0), count: len)
         let readLen = inputStream?.read(&readData, maxLength: len)
         XCTAssertEqual(Data(readData), randomData)
         XCTAssertEqual(readLen, randomData.count)
     }
-
-    func testReadFromInputStream() {
-        
-    }
     
+    func testStreamWithRunLoop() {
+        inputStream = makeStream()
+        let len = Int.random(in: 0..<100)
+        let randomData = randData(length: len)
+        
+        let tenSeconds = Double(10)
+        let oneSecond = TimeInterval(1)
+        runOnBackgroundQueue(oneSecond) {
+            self.inputStream?.accept(randomData)
+        }
+        let dateInFuture = Date(timeIntervalSinceNow: tenSeconds)
+        inputStream?.schedule(in: .current, forMode: RunLoop.Mode.default)
+        RunLoop.current.run(until: dateInFuture)
+        XCTAssertTrue(dateInFuture.timeIntervalSinceNow > 0, "Timeout. RunLoop didn't exit. ")
+    }
 }
 
 extension BLEInputStreamTests: StreamDelegate {
